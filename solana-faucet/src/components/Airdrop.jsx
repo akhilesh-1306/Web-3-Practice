@@ -1,6 +1,8 @@
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { LAMPORTS_PER_SOL } from "@solana/web3.js";
 import { useState } from "react";
+import ShowBalance from "./ShowBalance";
+import SendTokens from "./SendTokens";
 
 const Airdrop = () => {
   const wallet = useWallet();
@@ -8,6 +10,7 @@ const Airdrop = () => {
   const [amount, setAmount] = useState();
   const [modalMessage, setModalMessage] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showBalance, setShowBalance] = useState(false);
 
   const handleAmountChange = (e) => {
     setAmount(e.target.value);
@@ -36,7 +39,7 @@ const Airdrop = () => {
   };
 
   return (
-    <div className="h-screen bg-gray-900 flex items-center justify-center">
+    <div className="h-screen bg-gray-900 items-center justify-center">
       <div className="bg-gray-800 text-white p-8 rounded-lg shadow-lg w-96">
         <h1 className="text-2xl font-bold mb-6 text-center">Solana Airdrop</h1>
         <input
@@ -51,6 +54,12 @@ const Airdrop = () => {
           className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-md text-lg font-semibold transition"
         >
           Send Airdrop
+        </button>
+        <button
+          onClick={() => setShowBalance(true)}
+          className="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-md text-lg font-semibold transition mt-4"
+        >
+          Check Balance
         </button>
       </div>
 
@@ -69,6 +78,15 @@ const Airdrop = () => {
           </div>
         </div>
       )}
+
+      {/* Conditional Rendering for ShowBalance */}
+      {showBalance &&
+        <ShowBalance />
+      }
+      <div>
+        <SendTokens/>
+      </div>
+
     </div>
   );
 };

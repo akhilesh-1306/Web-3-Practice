@@ -4,7 +4,7 @@ import { WalletModalProvider, WalletDisconnectButton, WalletMultiButton } from '
 import { clusterApiUrl } from '@solana/web3.js';
 import '@solana/wallet-adapter-react-ui/styles.css';
 
-import Airdrop from './Airdrop';
+import Airdrop from './components/Airdrop';
 
 function App() {
   return (
