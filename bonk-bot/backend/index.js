@@ -16,7 +16,7 @@ app.use(express.json())
 app.use(cors())
 const JWT_SECRET = "123456"
 
-const connection = new Connection("https://solana-devnet.g.alchemy.com/v2/gozV6_lz8j32UN8PmpqGtGOt4_gye6G1")
+const connection = new Connection("rpc server")
 
 // app.post("/api/v1/signup", async (req, res) => {
 //     const username = req.body.username
